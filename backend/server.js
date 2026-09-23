@@ -3,7 +3,7 @@ import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { ApiError, loadContractors, recommend, catalog } from './recommendations.js';
 
-export const defaultDataPath = fileURLToPath(new URL('../src/data/contractors.json', import.meta.url));
+export const defaultDataPath = fileURLToPath(new URL('./src/data/contractors.json', import.meta.url));
 export const dataPath = () => process.env.DATA_PATH ? resolve(process.env.DATA_PATH) : defaultDataPath;
 const maxBytes = 16 * 1024;
 export function createServer(rows, { corsOrigin = process.env.CORS_ORIGIN || '*' } = {}) {
@@ -66,7 +66,7 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
     server.listen(port, process.env.HOST || '0.0.0.0', () => console.log(`EventMatch API: http://localhost:${port} (${rows.length} contractors)`));
     for (const signal of ['SIGINT', 'SIGTERM']) process.on(signal, () => { server.close(); server.closeIdleConnections(); });
   } catch (error) {
-    console.error(`Startup failed: ${error.message}\nОжидается ../src/data/contractors.json или переменная DATA_PATH.`);
+    console.error(`Startup failed: ${error.message}\nОжидается ./src/data/contractors.json или переменная DATA_PATH.`);
     process.exitCode = 1;
   }
 }

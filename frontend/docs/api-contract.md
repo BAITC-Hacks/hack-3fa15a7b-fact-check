@@ -1,7 +1,6 @@
-# Предлагаемый контракт frontend
+# Контракт frontend и backend
 
-Это адаптационная граница, **не подтверждённый контракт готового backend**.
-После получения Swagger измените `src/services/api.js` и при необходимости `toPayload` в `src/utils/order.js`.
+HTTP backend находится в `backend/server.js`. Адаптер `src/services/api.js` преобразует серверный статус `no_category_in_city` в UI-статус `category_unavailable`; остальные поля передаются без изменения.
 
 `POST /recommendations` (путь задаётся через EXPO_PUBLIC_RECOMMENDATIONS_PATH).
 

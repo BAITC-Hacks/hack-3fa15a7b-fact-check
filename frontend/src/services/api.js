@@ -6,8 +6,7 @@ export const api = create({
   headers: { Accept: "application/json", "Content-Type": "application/json" },
 });
 
-// This is the frontend contract, not an assertion about the existing backend.
-// Adapt this single boundary once the backend OpenAPI is available.
+// Normalize the backend wire status to the existing UI state names.
 export async function getRecommendations(payload) {
   if (!isApiConfigured)
     throw new Error(
@@ -17,6 +16,9 @@ export async function getRecommendations(payload) {
     process.env.EXPO_PUBLIC_RECOMMENDATIONS_PATH || "/recommendations",
     payload,
   );
+  if (data?.status === "no_category_in_city") {
+    data.status = "category_unavailable";
+  }
   const states = ["matched", "category_unavailable", "no_matches"];
   const validCard = (item) =>
     item &&
