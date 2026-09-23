@@ -1,0 +1,21 @@
+{
+  "expo": {
+    "name": "Trust Me",
+    "slug": "Trust ME",
+    "scheme": "factcheck",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "kz.factcheck.app"
+    },
+    "android": {
+      "package": "kz.factcheck.app"
+    },
+    "web": {
+      "bundler": "metro"
+    },
+    "plugins": ["expo-router", "expo-dev-client"]
+  }
+}
