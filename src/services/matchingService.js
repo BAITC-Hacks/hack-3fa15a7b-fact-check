@@ -70,6 +70,7 @@ const matchesDuration = (contractor, duration) => {
 };
 
 
+
 /**
  * Creates concrete reasons for recommending a contractor.
  * These reasons are based ONLY on actual dataset fields.
