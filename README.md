@@ -73,7 +73,7 @@ EXPO_PUBLIC_RECOMMENDATIONS_PATH=/recommendations
 
 ```bash
 cd frontend
-npm ci
+npm i
 npm run web
 ```
 
@@ -81,8 +81,10 @@ npm run web
 
 ```bash
 npm run android
+npx expo run:android --device
 # или на macOS с Xcode:
 npm run ios
+npx expo run:ios --device
 ```
 
 Эти команды собирают и устанавливают Expo development build; для Android нужны Android SDK/эмулятор или подключённый телефон, для iOS — macOS и Xcode. После первой установки можно запускать Metro командой `npm start` из `frontend/` и открывать установленное приложение.
