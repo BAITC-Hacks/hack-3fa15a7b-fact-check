@@ -1,5 +1,5 @@
 // src/services/matchingService.js
-
+import { contractors } from "./dataService";
 const normalize = (value) =>
   String(value ?? "")
     .trim()
@@ -20,11 +20,28 @@ const parsePrice = (price) => {
   );
 };
 
+const normalizeDate = (value) => {
+  if (!value) return "";
+
+  if (value instanceof Date) {
+    return value.toISOString().slice(0, 10);
+  }
+
+  const stringValue = String(value).trim();
+
+  // Handles values like:
+  // 2026-10-06
+  // 2026-10-06T00:00:00.000Z
+  return stringValue.slice(0, 10);
+};
+
 const isAvailable = (contractor, requestedDate) => {
   if (!requestedDate) return true;
 
+  const targetDate = normalizeDate(requestedDate);
+
   return !(contractor.busy_dates || []).some(
-    (date) => date === requestedDate
+    (busyDate) => normalizeDate(busyDate) === targetDate
   );
 };
 
