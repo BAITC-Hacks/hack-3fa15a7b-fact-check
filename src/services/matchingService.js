@@ -69,8 +69,6 @@ const matchesDuration = (contractor, duration) => {
   return Number(contractor.max_hours) >= Number(duration);
 };
 
-// test
-
 /**
  * Creates concrete reasons for recommending a contractor.
  * These reasons are based ONLY on actual dataset fields.
